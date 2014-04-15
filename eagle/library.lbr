@@ -119,7 +119,7 @@
 </layers>
 <library>
 <packages>
-<package name="LSM9DS0-B">
+<package name="LSM9DS0-BREAKOUT">
 <wire x1="-7.62" y1="16.51" x2="-7.62" y2="-16.51" width="0.127" layer="21"/>
 <wire x1="-7.62" y1="-16.51" x2="7.62" y2="-16.51" width="0.127" layer="21"/>
 <wire x1="7.62" y1="-16.51" x2="7.62" y2="16.51" width="0.127" layer="21"/>
@@ -139,10 +139,6 @@
 <pad name="INT2_XM" x="-6.35" y="-15.24" drill="1" diameter="1.9304"/>
 <text x="5.715" y="-15.875" size="0.8128" layer="25" rot="R90">&gt;Name</text>
 <text x="6.985" y="-15.875" size="0.8128" layer="27" rot="R90">&gt;Value</text>
-<wire x1="-1.905" y1="1.905" x2="1.905" y2="1.905" width="0.127" layer="21"/>
-<wire x1="1.905" y1="1.905" x2="1.905" y2="-1.905" width="0.127" layer="21"/>
-<wire x1="1.905" y1="-1.905" x2="-1.905" y2="-1.905" width="0.127" layer="21"/>
-<wire x1="-1.905" y1="-1.905" x2="-1.905" y2="1.905" width="0.127" layer="21"/>
 </package>
 <package name="TQFP32">
 <description>&lt;B&gt;Thin Plasic Quad Flat Package&lt;/B&gt; Grid 0.8 mm</description>
@@ -220,7 +216,7 @@
 <rectangle x1="-3.0286" y1="3.556" x2="-2.5714" y2="4.5466" layer="51"/>
 <rectangle x1="-3.505" y1="-3.505" x2="3.505" y2="3.505" layer="39"/>
 </package>
-<package name="ADXL362-B">
+<package name="ADXL362-BREAKOUT">
 <wire x1="-6.35" y1="5.08" x2="6.35" y2="5.08" width="0.127" layer="21"/>
 <wire x1="6.35" y1="5.08" x2="6.35" y2="-5.08" width="0.127" layer="21"/>
 <wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.127" layer="21"/>
@@ -238,7 +234,7 @@
 </package>
 </packages>
 <symbols>
-<symbol name="LSM9DS0-B">
+<symbol name="LSM9DS0-BREAKOUT">
 <wire x1="-10.16" y1="15.24" x2="-10.16" y2="-15.24" width="0.254" layer="94"/>
 <wire x1="-10.16" y1="-15.24" x2="10.16" y2="-15.24" width="0.254" layer="94"/>
 <wire x1="10.16" y1="-15.24" x2="10.16" y2="15.24" width="0.254" layer="94"/>
@@ -299,7 +295,7 @@
 <pin name="PC0(ADC0)" x="24.13" y="29.21" length="middle" rot="R180"/>
 <pin name="PC6(/RESET)" x="-24.13" y="29.21" length="middle" function="dot"/>
 </symbol>
-<symbol name="ADXL362-B">
+<symbol name="ADXL362-BREAKOUT">
 <pin name="SCLK" x="-15.24" y="5.08" visible="pin" length="middle"/>
 <pin name="MOSI" x="-15.24" y="2.54" visible="pin" length="middle"/>
 <pin name="MISO" x="-15.24" y="0" visible="pin" length="middle"/>
@@ -320,10 +316,10 @@
 <deviceset name="LSM9DS0">
 <description>LSM9DS0 IMU Breakout Board</description>
 <gates>
-<gate name="G$1" symbol="LSM9DS0-B" x="0" y="0"/>
+<gate name="G$1" symbol="LSM9DS0-BREAKOUT" x="0" y="0"/>
 </gates>
 <devices>
-<device name="-BREAKOUT" package="LSM9DS0-B">
+<device name="-BREAKOUT" package="LSM9DS0-BREAKOUT">
 <connects>
 <connect gate="G$1" pin="CS_G" pad="CS_G"/>
 <connect gate="G$1" pin="CS_XM" pad="CS_XM"/>
@@ -400,10 +396,10 @@ Flash</description>
 <deviceset name="ADXL362">
 <description>ADXL362 Triple Axis Accelerometer Breakout Board</description>
 <gates>
-<gate name="G$1" symbol="ADXL362-B" x="0" y="0"/>
+<gate name="G$1" symbol="ADXL362-BREAKOUT" x="0" y="0"/>
 </gates>
 <devices>
-<device name="-BREAKOUT" package="ADXL362-B">
+<device name="-BREAKOUT" package="ADXL362-BREAKOUT">
 <connects>
 <connect gate="G$1" pin="CS" pad="CS"/>
 <connect gate="G$1" pin="GND" pad="GND"/>
