@@ -187,6 +187,14 @@ DIN A4, landscape with location and doc. field</description>
 <text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
+<symbol name="VDD">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="1.27" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.905" x2="0" y2="1.27" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="VDD" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="GND" prefix="GND">
@@ -206,6 +214,19 @@ DIN A4, landscape with location and doc. field</description>
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="VCC" symbol="VCC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VDD" prefix="VDD">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="VDD" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -237,8 +258,12 @@ DIN A4, landscape with location and doc. field</description>
 <pad name="DRDY_G" x="-6.35" y="-10.16" drill="1" diameter="1.9304"/>
 <pad name="INT1_XM" x="-6.35" y="-12.7" drill="1" diameter="1.9304"/>
 <pad name="INT2_XM" x="-6.35" y="-15.24" drill="1" diameter="1.9304"/>
-<text x="5.715" y="-15.875" size="0.8128" layer="25" rot="R90">&gt;Name</text>
-<text x="6.985" y="-15.875" size="0.8128" layer="27" rot="R90">&gt;Value</text>
+<text x="-2.54" y="15.24" size="0.8128" layer="25" rot="SR270">&gt;Name</text>
+<text x="-3.81" y="15.24" size="0.8128" layer="27" rot="SR270">&gt;Value</text>
+<hole x="5.08" y="13.97" drill="2"/>
+<hole x="5.08" y="-13.97" drill="2"/>
+<circle x="5.08" y="13.97" radius="1.27" width="0.0254" layer="20"/>
+<circle x="5.08" y="-13.97" radius="1.27" width="0.0254" layer="20"/>
 </package>
 <package name="TQFP32">
 <description>&lt;B&gt;Thin Plasic Quad Flat Package&lt;/B&gt; Grid 0.8 mm</description>
@@ -1430,12 +1455,9 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device=""/>
 <part name="U1" library="library" deviceset="ATMEGA328P-AU" device="-1030060P1"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
-<part name="P+1" library="supply1" deviceset="VCC" device=""/>
-<part name="U$1" library="library" deviceset="LSM9DS0" device="-BREAKOUT"/>
-<part name="P+2" library="supply1" deviceset="VCC" device=""/>
+<part name="U2" library="library" deviceset="LSM9DS0" device="-BREAKOUT"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="U$2" library="library" deviceset="ADXL362-BREAKOUT" device=""/>
-<part name="P+3" library="supply1" deviceset="VCC" device=""/>
+<part name="U3" library="library" deviceset="ADXL362-BREAKOUT" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="BAT1" library="SparkFun-Electromechanical" deviceset="BATTERY" device="12PTH"/>
 <part name="BAT2" library="SparkFun-Electromechanical" deviceset="BATTERY" device="12PTH"/>
@@ -1443,6 +1465,9 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="S1" library="SparkFun-Electromechanical" deviceset="SWITCH-MOMENTARY-2" device="PTH"/>
+<part name="VDD1" library="supply1" deviceset="VDD" device=""/>
+<part name="VDD2" library="supply1" deviceset="VDD" device=""/>
+<part name="VDD3" library="supply1" deviceset="VDD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1452,12 +1477,9 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="U1" gate="U" x="44.45" y="130.81"/>
 <instance part="GND1" gate="1" x="15.24" y="114.3"/>
-<instance part="P+1" gate="VCC" x="12.7" y="167.64"/>
-<instance part="U$1" gate="G$1" x="132.08" y="147.32"/>
-<instance part="P+2" gate="VCC" x="152.4" y="167.64"/>
+<instance part="U2" gate="G$1" x="132.08" y="147.32"/>
 <instance part="GND2" gate="1" x="152.4" y="127"/>
-<instance part="U$2" gate="G$1" x="132.08" y="104.14"/>
-<instance part="P+3" gate="VCC" x="152.4" y="116.84"/>
+<instance part="U3" gate="G$1" x="132.08" y="104.14"/>
 <instance part="GND3" gate="1" x="152.4" y="93.98"/>
 <instance part="BAT1" gate="G$1" x="187.96" y="160.02"/>
 <instance part="BAT2" gate="G$1" x="187.96" y="144.78"/>
@@ -1465,35 +1487,14 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <instance part="P+4" gate="VCC" x="177.8" y="167.64"/>
 <instance part="GND4" gate="1" x="198.12" y="121.92"/>
 <instance part="S1" gate="G$1" x="182.88" y="101.6"/>
+<instance part="VDD1" gate="G$1" x="12.7" y="167.64"/>
+<instance part="VDD2" gate="G$1" x="152.4" y="167.64"/>
+<instance part="VDD3" gate="G$1" x="152.4" y="116.84"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VCC" class="0">
-<segment>
-<pinref part="P+1" gate="VCC" pin="VCC"/>
-<wire x1="12.7" y1="165.1" x2="12.7" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="160.02" x2="20.32" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="U1" gate="U" pin="PC6(/RESET)"/>
-<wire x1="12.7" y1="160.02" x2="12.7" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="U1" gate="U" pin="VCC@1"/>
-<wire x1="12.7" y1="124.46" x2="12.7" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="U1" gate="U" pin="VCC@2"/>
-<wire x1="12.7" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U$1" gate="G$1" pin="VDD"/>
-<pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="147.32" y1="160.02" x2="152.4" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="160.02" x2="152.4" y2="165.1" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U$2" gate="G$1" pin="VDD"/>
-<pinref part="P+3" gate="VCC" pin="VCC"/>
-<wire x1="147.32" y1="109.22" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="109.22" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
-</segment>
 <segment>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
 <wire x1="177.8" y1="165.1" x2="177.8" y2="160.02" width="0.1524" layer="91"/>
@@ -1518,13 +1519,13 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <wire x1="20.32" y1="127" x2="15.24" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="U2" gate="G$1" pin="GND"/>
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="147.32" y1="134.62" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="134.62" x2="152.4" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="GND"/>
+<pinref part="U3" gate="G$1" pin="GND"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="147.32" y1="106.68" x2="152.4" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="106.68" x2="152.4" y2="96.52" width="0.1524" layer="91"/>
@@ -1540,6 +1541,104 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <wire x1="193.04" y1="129.54" x2="198.12" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="BAT2" gate="G$1" pin="-"/>
 <wire x1="193.04" y1="144.78" x2="198.12" y2="144.78" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SDA" class="0">
+<segment>
+<pinref part="U1" gate="U" pin="PC4(ADC4/SDA)"/>
+<wire x1="68.58" y1="149.86" x2="76.2" y2="149.86" width="0.1524" layer="91"/>
+<label x="71.12" y="149.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="SDA"/>
+<wire x1="116.84" y1="147.32" x2="104.14" y2="147.32" width="0.1524" layer="91"/>
+<label x="104.14" y="147.32" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SCL" class="0">
+<segment>
+<pinref part="U1" gate="U" pin="PC5(ADC5/SCL)"/>
+<wire x1="68.58" y1="147.32" x2="76.2" y2="147.32" width="0.1524" layer="91"/>
+<label x="71.12" y="147.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="SCL"/>
+<wire x1="116.84" y1="149.86" x2="104.14" y2="149.86" width="0.1524" layer="91"/>
+<label x="104.14" y="149.86" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SCK" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="SCLK"/>
+<wire x1="116.84" y1="109.22" x2="109.22" y2="109.22" width="0.1524" layer="91"/>
+<label x="109.22" y="109.22" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="U" pin="PB5(SCK)"/>
+<wire x1="68.58" y1="101.6" x2="76.2" y2="101.6" width="0.1524" layer="91"/>
+<label x="71.12" y="101.6" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="MOSI" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="MOSI"/>
+<wire x1="116.84" y1="106.68" x2="109.22" y2="106.68" width="0.1524" layer="91"/>
+<label x="109.22" y="106.68" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="U" pin="PB3(MOSI/OC2)"/>
+<wire x1="68.58" y1="106.68" x2="76.2" y2="106.68" width="0.1524" layer="91"/>
+<label x="71.12" y="106.68" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="MISO" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="MISO"/>
+<wire x1="116.84" y1="104.14" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
+<label x="109.22" y="104.14" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="U" pin="PB4(MISO)"/>
+<wire x1="68.58" y1="104.14" x2="76.2" y2="104.14" width="0.1524" layer="91"/>
+<label x="71.12" y="104.14" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="VDD" class="0">
+<segment>
+<wire x1="12.7" y1="165.1" x2="12.7" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="160.02" x2="20.32" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="U1" gate="U" pin="PC6(/RESET)"/>
+<wire x1="12.7" y1="160.02" x2="12.7" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="U1" gate="U" pin="VCC@1"/>
+<wire x1="12.7" y1="124.46" x2="12.7" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="U1" gate="U" pin="VCC@2"/>
+<wire x1="12.7" y1="121.92" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="124.46" x2="20.32" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="VDD1" gate="G$1" pin="VDD"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="VDD"/>
+<wire x1="147.32" y1="160.02" x2="152.4" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="160.02" x2="152.4" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="VDD2" gate="G$1" pin="VDD"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="VDD"/>
+<wire x1="147.32" y1="109.22" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="109.22" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="VDD3" gate="G$1" pin="VDD"/>
+</segment>
+</net>
+<net name="SS_U3" class="0">
+<segment>
+<pinref part="U1" gate="U" pin="PB2(SS/OC1B)"/>
+<wire x1="68.58" y1="109.22" x2="76.2" y2="109.22" width="0.1524" layer="91"/>
+<label x="71.12" y="109.22" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="CS"/>
+<wire x1="116.84" y1="101.6" x2="109.22" y2="101.6" width="0.1524" layer="91"/>
+<label x="109.22" y="101.6" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
