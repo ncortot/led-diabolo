@@ -220,6 +220,20 @@
 <rectangle x1="-3.0286" y1="3.556" x2="-2.5714" y2="4.5466" layer="51"/>
 <rectangle x1="-3.505" y1="-3.505" x2="3.505" y2="3.505" layer="39"/>
 </package>
+<package name="ADXL362-BREAKOUT">
+<wire x1="-6.35" y1="5.08" x2="6.35" y2="5.08" width="0.127" layer="21"/>
+<wire x1="6.35" y1="5.08" x2="6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-5.08" x2="6.35" y2="-5.08" width="0.127" layer="21"/>
+<pad name="SCLK" x="-5.08" y="3.81" drill="1" diameter="1.9304"/>
+<pad name="MOSI" x="-5.08" y="1.27" drill="1" diameter="1.9304"/>
+<pad name="MISO" x="-5.08" y="-1.27" drill="1" diameter="1.9304"/>
+<pad name="CS" x="-5.08" y="-3.81" drill="1" diameter="1.9304" shape="square"/>
+<pad name="VDD" x="5.08" y="3.81" drill="1" diameter="1.9304" shape="square"/>
+<pad name="GND" x="5.08" y="1.27" drill="1" diameter="1.9304"/>
+<pad name="INT1" x="5.08" y="-1.27" drill="1" diameter="1.9304"/>
+<pad name="INT2" x="5.08" y="-3.81" drill="1" diameter="1.9304"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LSM9DS0-BREAKOUT">
@@ -282,6 +296,22 @@
 <pin name="PC1(ADC1)" x="24.13" y="26.67" length="middle" rot="R180"/>
 <pin name="PC0(ADC0)" x="24.13" y="29.21" length="middle" rot="R180"/>
 <pin name="PC6(/RESET)" x="-24.13" y="29.21" length="middle" function="dot"/>
+</symbol>
+<symbol name="ADXL362-BREAKOUT">
+<pin name="SCLK" x="-15.24" y="5.08" visible="pin" length="middle"/>
+<pin name="MOSI" x="-15.24" y="2.54" visible="pin" length="middle"/>
+<pin name="MISO" x="-15.24" y="0" visible="pin" length="middle"/>
+<pin name="CS" x="-15.24" y="-2.54" visible="pin" length="middle"/>
+<pin name="VDD" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="15.24" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="INT1" x="15.24" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="INT2" x="15.24" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<wire x1="-10.16" y1="-5.08" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<text x="-10.16" y="8.128" size="1.27" layer="95">&gt;Name</text>
+<text x="-10.16" y="-7.112" size="1.27" layer="96">&gt;Value</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -357,6 +387,28 @@ Flash</description>
 <connect gate="U" pin="PD7(AIN1)" pad="11"/>
 <connect gate="U" pin="VCC@1" pad="4"/>
 <connect gate="U" pin="VCC@2" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="ADXL362-BREAKOUT">
+<gates>
+<gate name="G$1" symbol="ADXL362-BREAKOUT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="ADXL362-BREAKOUT">
+<connects>
+<connect gate="G$1" pin="CS" pad="CS"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="INT1" pad="INT1"/>
+<connect gate="G$1" pin="INT2" pad="INT2"/>
+<connect gate="G$1" pin="MISO" pad="MISO"/>
+<connect gate="G$1" pin="MOSI" pad="MOSI"/>
+<connect gate="G$1" pin="SCLK" pad="SCLK"/>
+<connect gate="G$1" pin="VDD" pad="VDD"/>
 </connects>
 <technologies>
 <technology name=""/>

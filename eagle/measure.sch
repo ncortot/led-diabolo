@@ -320,6 +320,20 @@ DIN A4, landscape with location and doc. field</description>
 <rectangle x1="-3.0286" y1="3.556" x2="-2.5714" y2="4.5466" layer="51"/>
 <rectangle x1="-3.505" y1="-3.505" x2="3.505" y2="3.505" layer="39"/>
 </package>
+<package name="ADXL362-BREAKOUT">
+<wire x1="-6.35" y1="5.08" x2="6.35" y2="5.08" width="0.127" layer="21"/>
+<wire x1="6.35" y1="5.08" x2="6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-5.08" x2="6.35" y2="-5.08" width="0.127" layer="21"/>
+<pad name="SCLK" x="-5.08" y="3.81" drill="1" diameter="1.9304"/>
+<pad name="MOSI" x="-5.08" y="1.27" drill="1" diameter="1.9304"/>
+<pad name="MISO" x="-5.08" y="-1.27" drill="1" diameter="1.9304"/>
+<pad name="CS" x="-5.08" y="-3.81" drill="1" diameter="1.9304" shape="square"/>
+<pad name="VDD" x="5.08" y="3.81" drill="1" diameter="1.9304" shape="square"/>
+<pad name="GND" x="5.08" y="1.27" drill="1" diameter="1.9304"/>
+<pad name="INT1" x="5.08" y="-1.27" drill="1" diameter="1.9304"/>
+<pad name="INT2" x="5.08" y="-3.81" drill="1" diameter="1.9304"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LSM9DS0-BREAKOUT">
@@ -382,6 +396,22 @@ DIN A4, landscape with location and doc. field</description>
 <pin name="PC1(ADC1)" x="24.13" y="26.67" length="middle" rot="R180"/>
 <pin name="PC0(ADC0)" x="24.13" y="29.21" length="middle" rot="R180"/>
 <pin name="PC6(/RESET)" x="-24.13" y="29.21" length="middle" function="dot"/>
+</symbol>
+<symbol name="ADXL362-BREAKOUT">
+<pin name="SCLK" x="-15.24" y="5.08" visible="pin" length="middle"/>
+<pin name="MOSI" x="-15.24" y="2.54" visible="pin" length="middle"/>
+<pin name="MISO" x="-15.24" y="0" visible="pin" length="middle"/>
+<pin name="CS" x="-15.24" y="-2.54" visible="pin" length="middle"/>
+<pin name="VDD" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="15.24" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="INT1" x="15.24" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="INT2" x="15.24" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<wire x1="-10.16" y1="-5.08" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<text x="-10.16" y="8.128" size="1.27" layer="95">&gt;Name</text>
+<text x="-10.16" y="-7.112" size="1.27" layer="96">&gt;Value</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -464,6 +494,28 @@ Flash</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="ADXL362-BREAKOUT">
+<gates>
+<gate name="G$1" symbol="ADXL362-BREAKOUT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="ADXL362-BREAKOUT">
+<connects>
+<connect gate="G$1" pin="CS" pad="CS"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="INT1" pad="INT1"/>
+<connect gate="G$1" pin="INT2" pad="INT2"/>
+<connect gate="G$1" pin="MISO" pad="MISO"/>
+<connect gate="G$1" pin="MOSI" pad="MOSI"/>
+<connect gate="G$1" pin="SCLK" pad="SCLK"/>
+<connect gate="G$1" pin="VDD" pad="VDD"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -483,6 +535,9 @@ Flash</description>
 <part name="U$1" library="library" deviceset="LSM9DS0-BREAKOUT" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
+<part name="U$2" library="library" deviceset="ADXL362-BREAKOUT" device=""/>
+<part name="P+3" library="supply1" deviceset="VCC" device=""/>
+<part name="GND3" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -496,6 +551,9 @@ Flash</description>
 <instance part="U$1" gate="G$1" x="132.08" y="147.32"/>
 <instance part="P+2" gate="VCC" x="152.4" y="167.64"/>
 <instance part="GND2" gate="1" x="152.4" y="127"/>
+<instance part="U$2" gate="G$1" x="132.08" y="104.14"/>
+<instance part="P+3" gate="VCC" x="152.4" y="116.84"/>
+<instance part="GND3" gate="1" x="152.4" y="93.98"/>
 </instances>
 <busses>
 </busses>
@@ -519,6 +577,12 @@ Flash</description>
 <wire x1="147.32" y1="160.02" x2="152.4" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="160.02" x2="152.4" y2="165.1" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="VDD"/>
+<pinref part="P+3" gate="VCC" pin="VCC"/>
+<wire x1="147.32" y1="109.22" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="109.22" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -535,6 +599,12 @@ Flash</description>
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="147.32" y1="134.62" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="134.62" x2="152.4" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="GND"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<wire x1="147.32" y1="106.68" x2="152.4" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="106.68" x2="152.4" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
