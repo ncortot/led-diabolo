@@ -68,7 +68,6 @@
 void pulse(int pin, int times);
 
 void isp_setup() {
-  Serial.begin(19200);
   pinMode(LED_PMODE, OUTPUT);
   pulse(LED_PMODE, 2);
   pinMode(LED_ERR, OUTPUT);
@@ -125,9 +124,6 @@ void isp_loop(void) {
 
   // light the heartbeat LED
   heartbeat();
-  if (Serial.available()) {
-    avrisp();
-  }
 }
 
 uint8_t getch() {
