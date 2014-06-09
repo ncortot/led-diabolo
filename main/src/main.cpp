@@ -1,3 +1,7 @@
+#include <Arduino.h>
+
+#include <led.h>
+
 static uint16_t counter = 0;
 
 void setup() {
@@ -6,6 +10,8 @@ void setup() {
     pinMode(A0, OUTPUT);
     pinMode(A1, OUTPUT);
     pinMode(A2, OUTPUT);
+
+    led_setup();
 }
 
 void loop() {
@@ -17,6 +23,8 @@ void loop() {
 
     Serial.print("loop ");
     Serial.println(counter, HEX);
+
+    led_loop();
 
     delay(100);
 }
