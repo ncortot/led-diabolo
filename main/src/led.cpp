@@ -21,6 +21,7 @@
 
 uint16_t brightness[CHANNELS];
 
+void update();
 void write(const uint16_t data, const uint8_t command);
 
 
@@ -44,24 +45,67 @@ void led_setup()
     // Enable OC2B output
     DDRD |= _BV(3);
 
-    // LED1642GW configuration
+    // Turn all channels off
     write(0x0000, CMD_SWITCH);
-    write(0x047f, CMD_CONFIG);
+
+    // LED1642GW configuration
+    //   0x0400 = Auto power shutdown
+    // LED current for With R-EXT = 10k
+    //   0x0053 = 20mA
+    //   0x0048 = 15mA
+    write(0x0448, CMD_CONFIG);
 
     // Testing
     write(0xffff, CMD_SWITCH);
-    for (uint8_t channel = 0; channel < CHANNELS; ++channel) {
-        brightness[channel] = 0xffff - channel * 0x1000;
-    }
-    for (uint8_t channel = CHANNELS - 1; channel > 0; --channel) {
-        write(brightness[channel], CMD_CHANNEL);
-    }
-    write(brightness[0], CMD_GLOBAL);
 }
 
 
 void led_loop()
 {
+    static const uint16_t step = 0x0080;
+    static const uint16_t max = 0x0800;
+
+    static uint16_t b = 0;
+    static uint8_t c = 0;
+    static uint8_t d = 1;
+
+    if (d == 1) {
+        b += step;
+        if (b > max) {
+            d = -1;
+        }
+    } else {
+        b -= step;
+        if (b == 0) {
+            d = 1;
+        }
+    }
+
+    for (uint8_t channel = 0; channel < CHANNELS; ++channel) {
+        if (channel % 3 == c) {
+            brightness[channel] = b;
+        } else {
+            brightness[channel] = 0;
+        }
+    }
+
+    if (b == 0) {
+        c += 1;
+        if (c > 2) {
+            c = 0;
+        }
+    }
+
+    update();
+}
+
+
+void update()
+{
+    for (uint8_t channel = CHANNELS - 1; channel > 0; --channel) {
+        write(brightness[channel], CMD_CHANNEL);
+    }
+    write(brightness[0], CMD_GLOBAL);
 }
 
 
