@@ -50,7 +50,7 @@ void led_setup()
 
     // LED1642GW configuration
     //   0x0400 = Auto power shutdown
-    // LED current for With R-EXT = 10k
+    // LED current for R-EXT = 10k
     //   0x0053 = 20mA
     //   0x0048 = 15mA
     write(0x0448, CMD_CONFIG);
