@@ -34,10 +34,6 @@ void led_setup()
     // Enable output pins
     DDRC |= _BV(SDO_PIN) | _BV(CLK_PIN) | _BV(LATCH_PIN);
 
-    // LED1642GW configuration
-    write(0x0000, CMD_SWITCH);
-    write(0x0400, CMD_CONFIG);
-
     // Enable PWM clock using timer 2
     // Toggle OC2B on compare match, CTC mode
     TCCR2A = _BV(COM2B0) | _BV(WGM21);
@@ -47,6 +43,10 @@ void led_setup()
     OCR2A = 0;
     // Enable OC2B output
     DDRD |= _BV(3);
+
+    // LED1642GW configuration
+    write(0x0000, CMD_SWITCH);
+    write(0x047f, CMD_CONFIG);
 
     // Testing
     write(0xffff, CMD_SWITCH);
@@ -67,7 +67,7 @@ void led_loop()
 
 void write(const uint16_t data, const uint8_t command)
 {
-    uint16_t latch = _BV(command);
+    uint16_t latch = 1 << (command - 1);
     for (uint16_t bit = 0x8000; bit; bit >>= 1) {
         // Set the next bit on SDO
         if (bit & data) {
