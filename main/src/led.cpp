@@ -60,13 +60,12 @@ void led_setup()
 }
 
 
-void led_loop()
+void led_loop(uint8_t color)
 {
     static const uint16_t step = 0x0080;
     static const uint16_t max = 0x0800;
 
     static uint16_t b = 0;
-    static uint8_t c = 0;
     static uint8_t d = 1;
 
     if (d == 1) {
@@ -82,17 +81,10 @@ void led_loop()
     }
 
     for (uint8_t channel = 0; channel < CHANNELS; ++channel) {
-        if (channel % 3 == c) {
+        if (channel % 3 == color) {
             brightness[channel] = b;
         } else {
             brightness[channel] = 0;
-        }
-    }
-
-    if (b == 0) {
-        c += 1;
-        if (c > 2) {
-            c = 0;
         }
     }
 
