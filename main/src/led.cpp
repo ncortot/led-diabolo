@@ -2,11 +2,11 @@
 
 #include "led.h"
 
-#define SDO_PORT    PORTB
+#define SDO_PORT    PORTC
 #define SDO_PIN     1
-#define CLK_PORT    PORTB
+#define CLK_PORT    PORTC
 #define CLK_PIN     2
-#define LATCH_PORT  PORTB
+#define LATCH_PORT  PORTC
 #define LATCH_PIN   3
 
 #define PWM_PIN     4
@@ -21,6 +21,7 @@
 
 uint16_t brightness[CHANNELS];
 
+void update();
 void write(const uint16_t data, const uint8_t command);
 
 
@@ -32,23 +33,74 @@ void led_setup()
     LATCH_PORT &= ~_BV(LATCH_PIN);
 
     // Enable output pins
+    DDRC |= _BV(SDO_PIN) | _BV(CLK_PIN) | _BV(LATCH_PIN);
+
+    // Enable PWM clock using timer 2
+    // Toggle OC2B on compare match, CTC mode
+    TCCR2A = _BV(COM2B0) | _BV(WGM21);
+    // No prescaling
+    TCCR2B = _BV(CS20);
+    // Set timer TOP to the lowest value for f = F_CPU / 2
+    OCR2A = 0;
+    // Enable OC2B output
+    DDRD |= _BV(3);
+
+    // Turn all channels off
+    write(0x0000, CMD_SWITCH);
 
     // LED1642GW configuration
-    write(0x0000, CMD_SWITCH);
-    write(0x0400, CMD_CONFIG);
-
-    // Enable PWM signal usin timer 2
-
+    //   0x0400 = Auto power shutdown
+    // LED current for R-EXT = 10k
+    //   0x0053 = 20mA
+    //   0x0048 = 15mA
+    write(0x0448, CMD_CONFIG);
 
     // Testing
-    write(0xff, CMD_SWITCH);
-    for (uint8_t channel = 0; channel < CHANNELS; ++channel) {
-        brightness[channel] = (16 - channel) * 4000;
-    }
+    write(0xffff, CMD_SWITCH);
 }
 
 
 void led_loop()
+{
+    static const uint16_t step = 0x0080;
+    static const uint16_t max = 0x0800;
+
+    static uint16_t b = 0;
+    static uint8_t c = 0;
+    static uint8_t d = 1;
+
+    if (d == 1) {
+        b += step;
+        if (b > max) {
+            d = -1;
+        }
+    } else {
+        b -= step;
+        if (b == 0) {
+            d = 1;
+        }
+    }
+
+    for (uint8_t channel = 0; channel < CHANNELS; ++channel) {
+        if (channel % 3 == c) {
+            brightness[channel] = b;
+        } else {
+            brightness[channel] = 0;
+        }
+    }
+
+    if (b == 0) {
+        c += 1;
+        if (c > 2) {
+            c = 0;
+        }
+    }
+
+    update();
+}
+
+
+void update()
 {
     for (uint8_t channel = CHANNELS - 1; channel > 0; --channel) {
         write(brightness[channel], CMD_CHANNEL);
@@ -59,7 +111,7 @@ void led_loop()
 
 void write(const uint16_t data, const uint8_t command)
 {
-    uint16_t latch = _BV(command);
+    uint16_t latch = 1 << (command - 1);
     for (uint16_t bit = 0x8000; bit; bit >>= 1) {
         // Set the next bit on SDO
         if (bit & data) {
