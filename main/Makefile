@@ -4,7 +4,11 @@
 TARGET = $(notdir $(CURDIR))
 
 # Serial port used for programming
-SERIAL=/dev/ttyACM0
+#
+# Linux: /dev/tty.ACM0
+# Mac: /dev/tty.usbmodem31941
+#
+SERIAL=/dev/tty.usbmodem31941
 
 # Set to 8000000L or 16000000L (fuses are configured for 8MHz)
 F_CPU = 8000000L
@@ -23,22 +27,26 @@ BUILDDIR = $(abspath $(CURDIR)/build)
 #************************************************************************
 
 # path location for Arduino
-ARDUINO_PATH = /usr/share/arduino
+#
+# Linux: /usr/share/arduino
+# Mac: /Applications/Arduino.app/Contents/Resources/Java
+#
+ARDUINO_PATH = /Applications/Arduino.app/Contents/Resources/Java
 
 # path location for Arduino libraries
 LIBRARY_PATH = libraries
 
 # path location for the avr compiler
-COMPILER_PATH = /usr/bin
+COMPILER_PATH = $(ARDUINO_PATH)/hardware/tools/avr/bin
 
 #************************************************************************
 # Settings below this point usually do not need to be edited
 #************************************************************************
 
-CORE_PATH = $(ARDUINO_PATH)/hardware/arduino/cores/arduino
+CORE_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(ARDUINO_PATH)/hardware/arduino/variants/standard -I$(CORE_PATH)/avr-libc
+CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(ARDUINO_PATH)/hardware/arduino/avr/variants/standard -I$(CORE_PATH)/avr-libc
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -89,7 +97,7 @@ build: $(BUILDDIR)/$(TARGET).elf
 hex: $(BUILDDIR)/$(TARGET).hex
 
 upload: $(BUILDDIR)/$(TARGET).hex
-	avrdude -p atmega328p -c arduino -P $(SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
+	avrdude -p atmega328p -C $(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf -c arduino -P $(SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
 
 fuses:
 	avrdude -p atmega328p -c arduino -P $(SERIAL) -U lfuse:w:0xe2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
