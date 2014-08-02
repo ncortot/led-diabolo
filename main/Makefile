@@ -46,7 +46,7 @@ COMPILER_PATH = $(ARDUINO_PATH)/hardware/tools/avr/bin
 CORE_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(ARDUINO_PATH)/hardware/arduino/avr/variants/standard -I$(CORE_PATH)/avr-libc
+CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(ARDUINO_PATH)/hardware/arduino/avr/variants/standard -I$(CORE_PATH)/avr-libc -I lib/IRLib
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -74,8 +74,8 @@ SIZE = $(abspath $(COMPILER_PATH))/avr-size
 
 # automatically create lists of the sources and objects
 INO_FILES := $(wildcard src/*.ino)
-C_FILES := $(wildcard src/*.c)
-CPP_FILES := $(wildcard src/*.cpp)
+C_FILES := $(wildcard src/*.c) $(wildcard lib/IRLib/*.c)
+CPP_FILES := $(wildcard src/*.cpp) $(wildcard lib/IRLib/*.cpp)
 AC_FILES := $(wildcard $(CORE_PATH)/*.c) $(wildcard $(CORE_PATH)/avr-libc/*.c)
 ACPP_FILES := $(wildcard $(CORE_PATH)/*.cpp) $(wildcard $(CORE_PATH)/avr-libc/*.cpp)
 LC_FILES := $(wildcard $(LIBRARY_PATH)/*/*.c)
