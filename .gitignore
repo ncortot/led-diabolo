@@ -3,3 +3,5 @@
 *.d
 *.hex
 *.elf
+
+/env.mk

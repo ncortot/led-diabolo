@@ -1,52 +1,58 @@
 .PHONY: all build hex upload fuses clean
 
 # The name of your project (used to name the compiled .hex file)
-TARGET = $(notdir $(CURDIR))
-
-# Serial port used for programming
-#
-# Linux: /dev/tty.ACM0
-# Mac: /dev/tty.usbmodem31941
-#
-SERIAL=/dev/tty.usbmodem31941
+TARGET := $(notdir $(CURDIR))
 
 # Set to 8000000L or 16000000L (fuses are configured for 8MHz)
-F_CPU = 8000000L
+F_CPU := 8000000L
 
-# Some libraries will require this to be defined
-# If you define this, you will break the default main.cpp
+# Define Arduino version for libraries
 ARDUINO = 105
 
-# directory to build in
-BUILDDIR = $(abspath $(CURDIR)/build)
+# Directory to build in
+BUILDDIR := $(abspath $(CURDIR)/build)
 
 #************************************************************************
 # Location of Arduino utilities, Toolchain, and Libraries.
-# To use this makefile without Arduino, copy the resources from these
-# locations and edit the pathnames.
+#
+# To change these settings locally, create an `env.mk` file at the root
+# of this project and set the required parameters, e.g.:
+#
+#   SERIAL := /dev/tty.usbmodem123456
+#   ARDUINO_PATH := /Applications/Arduino.app/Contents/Resources/Java
+#
 #************************************************************************
 
-# path location for Arduino
-#
-# Linux: /usr/share/arduino
-# Mac: /Applications/Arduino.app/Contents/Resources/Java
-#
-ARDUINO_PATH = /Applications/Arduino.app/Contents/Resources/Java
+# Include local settings if defined
+-include ../env.mk
 
-# path location for Arduino libraries
-LIBRARY_PATH = libraries
+# Serial port used for programming
+SERIAL ?= /dev/ttyACM0
 
-# path location for the avr compiler
-COMPILER_PATH = $(ARDUINO_PATH)/hardware/tools/avr/bin
+# Path location for Arduino
+ARDUINO_PATH ?= /usr/share/arduino
+
+# Location for Arduino libraries
+LIBRARY_PATH ?= lib
+
+# Configuration file for avrdude
+ifneq ("$(wildcard "$(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf")", "")
+	AVRDUDE_OPTIONS ?= "-C $(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf"
+endif
+
+# Add the avr compiler to the PATH
+export PATH := $(ARDUINO_PATH)/hardware/tools/avr/bin:$(PATH)
 
 #************************************************************************
 # Settings below this point usually do not need to be edited
 #************************************************************************
 
+# Arduino version 1.5 required
 CORE_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
+VARIANT_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/variants/standard
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(ARDUINO_PATH)/hardware/arduino/avr/variants/standard -I$(CORE_PATH)/avr-libc -I lib/IRLib
+CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(CORE_PATH)/avr-libc -I$(VARIANT_PATH)
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -66,16 +72,16 @@ LDFLAGS = -Os -Wl,--gc-sections -mmcu=atmega328p -T$(LDSCRIPT)
 LIBS = -lm
 
 # names for the compiler programs
-CC = $(abspath $(COMPILER_PATH))/avr-gcc
-CXX = $(abspath $(COMPILER_PATH))/avr-g++
-AR = $(abspath $(COMPILER_PATH))/avr-ar
-OBJCOPY = $(abspath $(COMPILER_PATH))/avr-objcopy
-SIZE = $(abspath $(COMPILER_PATH))/avr-size
+CC = avr-gcc
+CXX = avr-g++
+AR = avr-ar
+OBJCOPY = avr-objcopy
+SIZE = avr-size
 
 # automatically create lists of the sources and objects
 INO_FILES := $(wildcard src/*.ino)
-C_FILES := $(wildcard src/*.c) $(wildcard lib/IRLib/*.c)
-CPP_FILES := $(wildcard src/*.cpp) $(wildcard lib/IRLib/*.cpp)
+C_FILES := $(wildcard src/*.c)
+CPP_FILES := $(wildcard src/*.cpp)
 AC_FILES := $(wildcard $(CORE_PATH)/*.c) $(wildcard $(CORE_PATH)/avr-libc/*.c)
 ACPP_FILES := $(wildcard $(CORE_PATH)/*.cpp) $(wildcard $(CORE_PATH)/avr-libc/*.cpp)
 LC_FILES := $(wildcard $(LIBRARY_PATH)/*/*.c)
@@ -97,10 +103,10 @@ build: $(BUILDDIR)/$(TARGET).elf
 hex: $(BUILDDIR)/$(TARGET).hex
 
 upload: $(BUILDDIR)/$(TARGET).hex
-	avrdude -p atmega328p -C $(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf -c arduino -P $(SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
 
 fuses:
-	avrdude -p atmega328p -c arduino -P $(SERIAL) -U lfuse:w:0xe2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(SERIAL) -U lfuse:w:0xe2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
 
 $(BUILDDIR)/%.o: %.c
 	@echo -e "[CC]\t$<"
