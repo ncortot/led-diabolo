@@ -106,7 +106,7 @@ upload: $(BUILDDIR)/$(TARGET).hex
 	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
 
 fuses:
-	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U lfuse:w:0xe2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U lfuse:w:0xa2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
 
 $(BUILDDIR)/%.o: %.c
 	@echo -e "[CC]\t$<"

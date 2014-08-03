@@ -35,16 +35,6 @@ void led_setup()
     // Enable output pins
     DDRC |= _BV(SDO_PIN) | _BV(CLK_PIN) | _BV(LATCH_PIN);
 
-    // Enable PWM clock using timer 2
-    // Toggle OC2B on compare match, CTC mode
-    TCCR2A = _BV(COM2B0) | _BV(WGM21);
-    // No prescaling
-    TCCR2B = _BV(CS20);
-    // Set timer TOP to the lowest value for f = F_CPU / 2
-    OCR2A = 0;
-    // Enable OC2B output
-    DDRD |= _BV(3);
-
     // Turn all channels off
     write(0x0000, CMD_SWITCH);
 
