@@ -3,8 +3,8 @@
 # The name of your project (used to name the compiled .hex file)
 TARGET := $(notdir $(CURDIR))
 
-# Set to 8000000L or 16000000L (fuses are configured for 8MHz)
-F_CPU := 8000000L
+# Set to 8000000L or 16000000L
+F_CPU := 16000000L
 
 # Define Arduino version for libraries
 ARDUINO = 105
@@ -18,8 +18,8 @@ BUILDDIR := $(abspath $(CURDIR)/build)
 # To change these settings locally, create an `env.mk` file at the root
 # of this project and set the required parameters, e.g.:
 #
+#   RECEIVER_SERIAL := /dev/tty.usbmodem123456
 #   ARDUINO_PATH := /Applications/Arduino.app/Contents/Resources/Java
-#   ISP_SERIAL := /dev/tty.usbmodem123456
 #
 #************************************************************************
 
@@ -27,7 +27,7 @@ BUILDDIR := $(abspath $(CURDIR)/build)
 -include ../env.mk
 
 # Serial port used for programming
-ISP_SERIAL ?= /dev/ttyACM0
+RECEIVER_SERIAL ?= /dev/ttyACM0
 
 # Path location for Arduino
 ARDUINO_PATH ?= /usr/share/arduino
@@ -103,10 +103,11 @@ build: $(BUILDDIR)/$(TARGET).elf
 hex: $(BUILDDIR)/$(TARGET).hex
 
 upload: $(BUILDDIR)/$(TARGET).hex
-	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(RECEIVER_SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
 
 fuses:
-	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U lfuse:w:0xe2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
+	@echo "No need to change the fuses on the receiver board."
+	@false
 
 $(BUILDDIR)/%.o: %.c
 	@echo -e "[CC]\t$<"
