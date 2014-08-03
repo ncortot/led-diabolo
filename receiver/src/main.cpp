@@ -7,7 +7,7 @@ IRdecode decoder;
 IRrecv receiver(IR_RECEIVE_PIN);
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(SERIAL_SPEED);
 
     // Plug the IR receiver direcly on pins 3, 4, 5:
     //  - 3: DATA
