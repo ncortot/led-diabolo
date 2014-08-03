@@ -16,7 +16,7 @@ IRdecode decoder;
 IRrecv receiver(IR_RECEIVE_PIN);
 
 void setup() {
-    Serial.begin(19200);
+    Serial.begin(115200);
     receiver.enableIRIn();
     pinMode(IR_RECEIVE_PIN, INPUT);
     led_setup();
