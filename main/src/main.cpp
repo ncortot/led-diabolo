@@ -32,6 +32,8 @@ void loop() {
     if (receiver.GetResults(&decoder)) {
       color = 1;
       decoder.decode();
+      Serial.print("received command ");
+      Serial.println(decoder.value, HEX);
       switch (decoder.value) {
         case IR_REMOTE_CHMINUS:
           color = 0;
