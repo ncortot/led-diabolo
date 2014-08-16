@@ -3,8 +3,11 @@
 # The name of your project (used to name the compiled .hex file)
 TARGET := $(notdir $(CURDIR))
 
-# Set to 8000000L or 16000000L (fuses are configured for 8MHz)
-F_CPU := 8000000L
+# Set to 8000000L or 16000000L
+F_CPU := 16000000L
+
+# Serial monitor
+SERIAL_SPEED := 115200
 
 # Define Arduino version for libraries
 ARDUINO = 105
@@ -18,8 +21,8 @@ BUILDDIR := $(abspath $(CURDIR)/build)
 # To change these settings locally, create an `env.mk` file at the root
 # of this project and set the required parameters, e.g.:
 #
+#   RECEIVER_SERIAL := /dev/tty.usbmodem123456
 #   ARDUINO_PATH := /Applications/Arduino.app/Contents/Resources/Java
-#   ISP_SERIAL := /dev/tty.usbmodem123456
 #
 #************************************************************************
 
@@ -27,7 +30,7 @@ BUILDDIR := $(abspath $(CURDIR)/build)
 -include ../env.mk
 
 # Serial port used for programming
-ISP_SERIAL ?= /dev/ttyACM0
+RECEIVER_SERIAL ?= /dev/ttyACM0
 
 # Path location for Arduino
 ARDUINO_PATH ?= /usr/share/arduino
@@ -52,7 +55,7 @@ CORE_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
 VARIANT_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/variants/standard
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -Isrc -I$(CORE_PATH) -I$(CORE_PATH)/avr-libc -I$(VARIANT_PATH)
+CPPFLAGS = -mmcu=atmega328p -g -Os -w -Wall -ffunction-sections -fdata-sections -DF_CPU=$(F_CPU) -DSERIAL_SPEED=$(SERIAL_SPEED) -Isrc -I$(CORE_PATH) -I$(CORE_PATH)/avr-libc -I$(VARIANT_PATH)
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -103,10 +106,15 @@ build: $(BUILDDIR)/$(TARGET).elf
 hex: $(BUILDDIR)/$(TARGET).hex
 
 upload: $(BUILDDIR)/$(TARGET).hex
-	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(RECEIVER_SERIAL) -U flash:w:$(BUILDDIR)/$(TARGET).hex:i
 
 fuses:
-	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(ISP_SERIAL) -U lfuse:w:0xa2:m -U hfuse:w:0xda:m -U efuse:w:0x05:m
+	avrdude -p atmega328p $(AVRDUDE_OPTIONS) -c arduino -P $(RECEIVER_SERIAL) -U lfuse:w:0xFF:m -U hfuse:w:0xDE:m -U efuse:w:0x05:m
+
+monitor:
+	@echo "Serial monitor on $(RECEIVER_SERIAL)..."
+	@stty -F $(RECEIVER_SERIAL) cs8 $(SERIAL_SPEED) ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
+	@cat $(RECEIVER_SERIAL)
 
 $(BUILDDIR)/%.o: %.c
 	@echo -e "[CC]\t$<"
