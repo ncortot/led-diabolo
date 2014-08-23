@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -403,6 +403,74 @@
 <text x="-1.016" y="-1.778" size="0.4064" layer="27">&gt;VALUE</text>
 <wire x1="2.159" y1="-1.5875" x2="1.651" y2="-1.5875" width="0.2032" layer="21"/>
 </package>
+<package name="HEIMDALL-TOP">
+<description>Heimdall package for IR receiver, configured for top view.</description>
+<wire x1="3.299459375" y1="1.4986" x2="-3.299459375" y2="1.4986" width="0.127" layer="51"/>
+<wire x1="-3.299459375" y1="1.4986" x2="-3.299459375" y2="-1.4986" width="0.127" layer="51"/>
+<wire x1="-3.299459375" y1="-1.4986" x2="3.299459375" y2="-1.4986" width="0.127" layer="51"/>
+<wire x1="3.299459375" y1="-1.4986" x2="3.299459375" y2="1.4986" width="0.127" layer="51"/>
+<wire x1="-3.299459375" y1="0.381" x2="-3.299459375" y2="-0.381" width="0.2032" layer="21"/>
+<wire x1="3.299459375" y1="0.381" x2="3.299459375" y2="-0.381" width="0.2032" layer="21"/>
+<wire x1="-2.54" y1="-1.4986" x2="2.54" y2="-1.4986" width="0.2032" layer="21"/>
+<smd name="1" x="1.905" y="0.889" dx="1.778" dy="0.9144" layer="1" rot="R90"/>
+<smd name="2" x="0.635" y="0.889" dx="1.778" dy="0.9144" layer="1" rot="R90"/>
+<smd name="3" x="-0.635" y="0.889" dx="1.778" dy="0.9144" layer="1" rot="R90"/>
+<smd name="4" x="-1.905" y="0.889" dx="1.778" dy="0.9144" layer="1" rot="R90"/>
+<text x="0" y="-2.54" size="0.6604" layer="25" align="bottom-center">&gt;Name</text>
+<text x="0" y="-1.143" size="0.6604" layer="27" align="bottom-center">&gt;Value</text>
+</package>
+<package name="GA1A1S202WP">
+<smd name="1" x="-0.799996875" y="0.6499875" dx="0.6096" dy="0.6096" layer="1"/>
+<smd name="2" x="-0.799996875" y="-0.6499875" dx="0.6096" dy="0.6096" layer="1"/>
+<smd name="3" x="0.799996875" y="-0.6499875" dx="0.6096" dy="0.6096" layer="1"/>
+<smd name="4" x="0.799996875" y="0.6499875" dx="0.6096" dy="0.6096" layer="1"/>
+<wire x1="1.397" y1="0.889" x2="1.397" y2="-0.889" width="0.127" layer="21"/>
+<text x="-1.27" y="-1.778" size="0.508" layer="26">&gt;Name</text>
+</package>
+<package name="BATTERY_12MM_PTH">
+<wire x1="-6.35" y1="-3.81" x2="-3.81" y2="-6.35" width="0.2032" layer="21"/>
+<wire x1="-3.81" y1="-6.35" x2="3.81" y2="-6.35" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="-6.35" x2="6.35" y2="-3.81" width="0.2032" layer="21"/>
+<wire x1="6.35" y1="-3.81" x2="6.35" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="-6.35" y1="-3.81" x2="-6.35" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="4.064" width="0.2032" layer="21"/>
+<wire x1="6.35" y1="2.54" x2="6.35" y2="4.064" width="0.2032" layer="21"/>
+<wire x1="-3.175" y1="5.588" x2="3.175" y2="5.588" width="0.2032" layer="21" curve="102.56384"/>
+<wire x1="-6.35" y1="4.064" x2="-3.175" y2="5.588" width="0.2032" layer="21" curve="-123.398919"/>
+<wire x1="6.35" y1="4.064" x2="3.175" y2="5.588" width="0.2032" layer="21" curve="128.77667"/>
+<pad name="VCC@1" x="-6.604" y="0" drill="1.8542" shape="square"/>
+<pad name="VCC@2" x="6.604" y="0" drill="1.8542" shape="square"/>
+<smd name="GND" x="0" y="0" dx="7.62" dy="7.62" layer="1"/>
+<text x="-3.81" y="-3.81" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-3.81" y="-5.08" size="0.4064" layer="27">&gt;VALUE</text>
+</package>
+<package name="LIPO-1100MAH">
+<wire x1="-17" y1="-26" x2="17" y2="-26" width="0.2032" layer="51"/>
+<wire x1="17" y1="-26" x2="17" y2="26" width="0.2032" layer="51"/>
+<wire x1="17" y1="26" x2="-17" y2="26" width="0.2032" layer="51"/>
+<wire x1="-17" y1="26" x2="-17" y2="-26" width="0.2032" layer="51"/>
+<wire x1="-1" y1="34" x2="-1" y2="30" width="0.127" layer="51"/>
+<wire x1="1" y1="34" x2="1" y2="30" width="0.127" layer="51"/>
+<pad name="+" x="-5" y="32" drill="1.397" diameter="2.54"/>
+<pad name="-" x="5" y="32" drill="1.397" diameter="2.54"/>
+</package>
+<package name="LIPO-110-TABS">
+<wire x1="-6" y1="-11.5" x2="6" y2="-11.5" width="0.254" layer="51"/>
+<wire x1="6" y1="-11.5" x2="6" y2="11.5" width="0.254" layer="51"/>
+<wire x1="-6" y1="11.5" x2="-6" y2="-11.5" width="0.254" layer="51"/>
+<wire x1="2.5" y1="11" x2="2.5" y2="10" width="0.254" layer="21"/>
+<wire x1="-3" y1="10.5" x2="-2" y2="10.5" width="0.254" layer="21"/>
+<wire x1="2" y1="10.5" x2="3" y2="10.5" width="0.254" layer="21"/>
+<wire x1="-4.414" y1="11.5" x2="-6" y2="11.5" width="0.254" layer="21"/>
+<wire x1="6" y1="11.5" x2="-6" y2="11.5" width="0.254" layer="51"/>
+<wire x1="4.414" y1="11.5" x2="6" y2="11.5" width="0.254" layer="21"/>
+<wire x1="0.586" y1="11.5" x2="-0.6" y2="11.5" width="0.254" layer="21"/>
+<wire x1="-6" y1="-11.5" x2="6" y2="-11.5" width="0.254" layer="21"/>
+<rectangle x1="-3.5" y1="11.5" x2="-1.5" y2="16.5" layer="51"/>
+<rectangle x1="1.5" y1="11.5" x2="3.5" y2="16.5" layer="51"/>
+<smd name="+" x="2.5" y="14.5" dx="3" dy="6" layer="1"/>
+<smd name="-" x="-2.5" y="14.5" dx="3" dy="6" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LSM9DS0-BREAKOUT">
@@ -421,8 +489,8 @@
 <pin name="DRDY_G" x="-15.24" y="-7.62" visible="pin" length="middle"/>
 <pin name="INT1_XM" x="-15.24" y="-10.16" visible="pin" length="middle"/>
 <pin name="INT2_XM" x="-15.24" y="-12.7" visible="pin" length="middle"/>
-<pin name="VDD" x="15.24" y="12.7" visible="pin" length="middle" rot="R180"/>
-<pin name="GND" x="15.24" y="-12.7" visible="pin" length="middle" rot="R180"/>
+<pin name="VDD" x="15.24" y="12.7" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND" x="15.24" y="-12.7" visible="pin" length="middle" direction="pwr" rot="R180"/>
 <text x="-10.16" y="16.002" size="1.27" layer="95">&gt;Name</text>
 <text x="-10.16" y="-17.018" size="1.27" layer="96">&gt;Value</text>
 </symbol>
@@ -487,10 +555,10 @@
 <wire x1="10.16" y1="10.16" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
 <wire x1="10.16" y1="-10.16" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
 <wire x1="-10.16" y1="-10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
-<pin name="VDD" x="-15.24" y="7.62" visible="pin" length="middle"/>
+<pin name="VDD" x="-15.24" y="7.62" visible="pin" length="middle" direction="pwr"/>
 <pin name="SDA" x="-15.24" y="2.54" visible="pin" length="middle"/>
 <pin name="SCL" x="-15.24" y="0" visible="pin" length="middle"/>
-<pin name="GND" x="-15.24" y="-7.62" visible="pin" length="middle"/>
+<pin name="GND" x="-15.24" y="-7.62" visible="pin" length="middle" direction="pwr"/>
 <pin name="INT1" x="15.24" y="7.62" visible="pin" length="middle" rot="R180"/>
 <pin name="INT2" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
 <pin name="INT3" x="15.24" y="2.54" visible="pin" length="middle" rot="R180"/>
@@ -505,10 +573,10 @@
 <wire x1="-7.62" y1="-10.16" x2="7.62" y2="-10.16" width="0.254" layer="94"/>
 <wire x1="7.62" y1="-10.16" x2="7.62" y2="10.16" width="0.254" layer="94"/>
 <wire x1="7.62" y1="10.16" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
-<pin name="VDD" x="-12.7" y="7.62" visible="pin" length="middle"/>
+<pin name="VDD" x="-12.7" y="7.62" visible="pin" length="middle" direction="pwr"/>
 <pin name="SDA" x="-12.7" y="2.54" visible="pin" length="middle"/>
 <pin name="SCL" x="-12.7" y="0" visible="pin" length="middle"/>
-<pin name="GND" x="-12.7" y="-7.62" visible="pin" length="middle"/>
+<pin name="GND" x="-12.7" y="-7.62" visible="pin" length="middle" direction="pwr"/>
 <text x="-7.62" y="-12.192" size="1.27" layer="96">&gt;Value</text>
 <text x="-7.62" y="10.668" size="1.27" layer="95">&gt;Name</text>
 </symbol>
@@ -609,9 +677,9 @@
 <wire x1="-7.62" y1="-7.62" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
 <text x="0" y="-2.54" size="1.27" layer="96" align="center">&gt;Value</text>
 <text x="-7.62" y="3.048" size="1.27" layer="95">&gt;Name</text>
-<pin name="IN" x="-12.7" y="0" visible="pin" length="middle"/>
-<pin name="OUT" x="12.7" y="0" visible="pin" length="middle" rot="R180"/>
-<pin name="GND" x="0" y="-12.7" visible="off" length="middle" rot="R90"/>
+<pin name="IN" x="-12.7" y="0" visible="pin" length="middle" direction="pwr"/>
+<pin name="OUT" x="12.7" y="0" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND" x="0" y="-12.7" visible="off" length="middle" direction="pwr" rot="R90"/>
 <text x="0" y="-5.08" size="1.27" layer="97" align="center">GND</text>
 </symbol>
 <symbol name="MOSFET-NCHANNEL">
@@ -693,9 +761,42 @@
 <vertex x="-2.413" y="-2.921"/>
 </polygon>
 </symbol>
+<symbol name="IR-RCV">
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="5.842" size="1.778" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="10.16" y="-2.54" length="middle" direction="pwr" rot="R180"/>
+<pin name="OUT" x="10.16" y="0" length="middle" direction="out" rot="R180"/>
+<pin name="VS" x="10.16" y="2.54" length="middle" direction="pwr" rot="R180"/>
+</symbol>
+<symbol name="GA1A1S202WP">
+<wire x1="-5.08" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<pin name="VCC" x="10.16" y="2.54" length="middle" direction="pwr" rot="R180"/>
+<pin name="IO" x="10.16" y="0" length="middle" rot="R180"/>
+<pin name="GND" x="10.16" y="-2.54" length="middle" direction="pwr" rot="R180"/>
+<text x="-5.08" y="5.588" size="1.27" layer="95">&gt;Name</text>
+<text x="-5.08" y="-7.112" size="1.27" layer="96">&gt;Value</text>
+</symbol>
+<symbol name="BATTERY">
+<wire x1="-1.27" y1="3.81" x2="-1.27" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="0" y1="1.27" x2="0" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="3.81" x2="1.27" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.524" y2="0" width="0.1524" layer="94"/>
+<text x="-3.81" y="5.08" size="1.778" layer="95">&gt;NAME</text>
+<text x="-3.81" y="-6.35" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="-" x="5.08" y="0" visible="off" length="short" direction="pwr" rot="R180"/>
+<pin name="+" x="-5.08" y="0" visible="off" length="short" direction="pwr"/>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="LSM9DS0">
+<deviceset name="LSM9DS0" prefix="U">
 <description>LSM9DS0 IMU Breakout Board</description>
 <gates>
 <gate name="G$1" symbol="LSM9DS0-BREAKOUT" x="0" y="0"/>
@@ -798,7 +899,7 @@ Flash</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="BMX055-MODULE">
+<deviceset name="BMX055-MODULE" prefix="U">
 <description>BMX055 9-Axis Module DIP-12 size from BBTech
 
 The BMX055 is an integrated 9-axis sensor for the detection of movements and rotations and magnetic heading. It comprises the full functionality of a triaxial, low-g acceleration sensor, a triaxial angular rate sensor and triaxial geomagnetic sensor. This module approach allows only I2C communication, can not change its slave address.
@@ -848,7 +949,7 @@ Pin to pin pitch: 2.54 mm / 0.1 in.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MMA8652FC-MODULE">
+<deviceset name="MMA8652FC-MODULE" prefix="U">
 <description>MMA8652FC 3-Axis 12-bit Digital Accelerometer Module DIP-12 size from BBTech
 
 This accelerometer is packed with embedded functions with flexible user-programmable options, configurable to two interrupt pins. Embedded interrupt functions enable overall power savings, by relieving the host processor from continuously polling data. There is access to either low-pass or high-pass filtered data, which minimizes the data analysis required for jolt detection and faster transitions. The device can be configured to generate inertial wake-up interrupt signals from any combination of the configurable embedded functions, enabling the MMA8652FC to monitor inertial events while remaining in a low-power mode during periods of inactivity.
@@ -891,7 +992,7 @@ Pin to pin pitch: 2.54 mm / 0.1 in.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="LED1642GW">
+<deviceset name="LED1642GW" prefix="U">
 <description>16 channels LED driver with error detection current gain control and 12/16-bit PWM brightness control</description>
 <gates>
 <gate name="G$1" symbol="LED1642GW" x="0" y="0"/>
@@ -930,7 +1031,7 @@ Pin to pin pitch: 2.54 mm / 0.1 in.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="LED-RGB">
+<deviceset name="LED-RGB" prefix="D">
 <description>&lt;b&gt;Tri-Color SMD LED from Cree&lt;/b&gt;
 
 Part/N: CLV1L-FKB-CHMMQEHBB7673673</description>
@@ -972,7 +1073,7 @@ Part/N: CLV1L-FKB-CHMMQEHBB7673673</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="VREG">
+<deviceset name="VREG" prefix="U">
 <description>Voltage Regulator</description>
 <gates>
 <gate name="G$1" symbol="VREG" x="0" y="0"/>
@@ -1043,6 +1144,66 @@ Small Signal Fast Switching Diode</description>
 <attribute name="PROD_ID" value="SFH-4253-Z" constant="no"/>
 <attribute name="TYPE" value="IR LED" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="IR-RCV" prefix="U" uservalue="yes">
+<description>Vishay IR receivers</description>
+<gates>
+<gate name="G$1" symbol="IR-RCV" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-HT" package="HEIMDALL-TOP">
+<connects>
+<connect gate="G$1" pin="GND" pad="1 4"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
+<connect gate="G$1" pin="VS" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PACKAGE" value="Heimdall" constant="no"/>
+<attribute name="VIEW" value="Top" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GA1A1S202WP" prefix="U">
+<description>&lt;h3&gt;OPIC Light Detector&lt;/h3&gt;
+
+Surface Mount Detector (555 nm) with Dynamic Range of 3 to 55,000 lx, extended operating temperature range.</description>
+<gates>
+<gate name="G$1" symbol="GA1A1S202WP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="GA1A1S202WP">
+<connects>
+<connect gate="G$1" pin="GND" pad="1 2"/>
+<connect gate="G$1" pin="IO" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BATTERY" prefix="BAT" uservalue="yes">
+<description>&lt;b&gt;Battery Holders&lt;/b&gt;&lt;br&gt;
+Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
+20MM_4LEGS, BATT-10373</description>
+<gates>
+<gate name="G$1" symbol="BATTERY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="12PTH" package="BATTERY_12MM_PTH">
+<connects>
+<connect gate="G$1" pin="+" pad="VCC@1 VCC@2"/>
+<connect gate="G$1" pin="-" pad="GND"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
