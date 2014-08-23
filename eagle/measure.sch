@@ -523,6 +523,12 @@ DIN A4, landscape with location and doc. field</description>
 <smd name="GND" x="0" y="0" dx="7.62" dy="7.62" layer="1"/>
 <text x="-3.81" y="-3.81" size="0.4064" layer="25">&gt;NAME</text>
 <text x="-3.81" y="-5.08" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="3.175" y1="14.986" x2="-3.175" y2="14.986" width="0.2032" layer="21" curve="102.56384"/>
+<wire x1="-6.35" y1="7.62" x2="-6.35" y2="12.7" width="0.2032" layer="51"/>
+<wire x1="-6.35" y1="12.7" x2="-2.54" y2="16.51" width="0.2032" layer="51"/>
+<wire x1="-2.54" y1="16.51" x2="2.54" y2="16.51" width="0.2032" layer="51"/>
+<wire x1="2.54" y1="16.51" x2="6.35" y2="12.7" width="0.2032" layer="51"/>
+<wire x1="6.35" y1="12.7" x2="6.35" y2="7.62" width="0.2032" layer="51"/>
 </package>
 </packages>
 <symbols>
