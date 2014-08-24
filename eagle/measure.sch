@@ -530,6 +530,9 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="2.54" y1="16.51" x2="6.35" y2="12.7" width="0.2032" layer="51"/>
 <wire x1="6.35" y1="12.7" x2="6.35" y2="7.62" width="0.2032" layer="51"/>
 </package>
+<package name="PAD-WEIGHT-0.3">
+<smd name="P$1" x="0" y="0" dx="7.62" dy="7.62" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="ATMEGA168">
@@ -815,6 +818,13 @@ DIN A4, landscape with location and doc. field</description>
 <text x="-3.81" y="-6.35" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="-" x="5.08" y="0" visible="off" length="short" direction="pwr" rot="R180"/>
 <pin name="+" x="-5.08" y="0" visible="off" length="short" direction="pwr"/>
+</symbol>
+<symbol name="PAD-WEIGHT">
+<wire x1="-7.62" y1="2.54" x2="7.62" y2="2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="2.54" x2="7.62" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-2.54" x2="-7.62" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-2.54" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
+<text x="0" y="0" size="1.27" layer="95" align="center">&gt;Name</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1173,6 +1183,18 @@ Various common sizes : AA, AAA, 20mm coin cell and 12mm coin cell.&lt;br&gt;
 <connect gate="G$1" pin="+" pad="VCC@1 VCC@2"/>
 <connect gate="G$1" pin="-" pad="GND"/>
 </connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PAD-WEIGHT">
+<gates>
+<gate name="G$1" symbol="PAD-WEIGHT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-0.3" package="PAD-WEIGHT-0.3">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -7116,6 +7138,9 @@ Metric Code Size 5664</description>
 <part name="C6" library="resistor" deviceset="C-EU" device="C0603" value="1u"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="resistor" deviceset="R-EU_" device="R0603" value="68K"/>
+<part name="W1" library="library" deviceset="PAD-WEIGHT" device="-0.3"/>
+<part name="W2" library="library" deviceset="PAD-WEIGHT" device="-0.3"/>
+<part name="W3" library="library" deviceset="PAD-WEIGHT" device="-0.3"/>
 </parts>
 <sheets>
 <sheet>
@@ -7174,6 +7199,9 @@ Metric Code Size 5664</description>
 <instance part="C6" gate="G$1" x="238.76" y="78.74"/>
 <instance part="GND10" gate="1" x="238.76" y="66.04"/>
 <instance part="R5" gate="G$1" x="132.08" y="20.32" rot="R90"/>
+<instance part="W1" gate="G$1" x="66.04" y="71.12"/>
+<instance part="W2" gate="G$1" x="66.04" y="63.5"/>
+<instance part="W3" gate="G$1" x="66.04" y="55.88"/>
 </instances>
 <busses>
 <bus name="LED[0..14]">
