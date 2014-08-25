@@ -45,8 +45,7 @@ void led_setup()
     //   0x0048 = 15mA
     write(0x0448, CMD_CONFIG);
 
-    // Testing
-    write(0xffff, CMD_SWITCH);
+    led_on();
 }
 
 
@@ -79,6 +78,18 @@ void led_loop(uint8_t color)
     }
 
     update();
+}
+
+
+void led_off()
+{
+    write(0x0000, CMD_SWITCH);
+}
+
+
+void led_on()
+{
+    write(0xffff, CMD_SWITCH);
 }
 
 

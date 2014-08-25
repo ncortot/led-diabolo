@@ -3,6 +3,7 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+#include "led.h"
 #include "sleep.h"
 
 volatile boolean sleep_state = false;
@@ -14,6 +15,7 @@ void wait_switch();
 
 inline void power_off()
 {
+    led_off();
     power_adc_disable();
 }
 
@@ -21,6 +23,7 @@ inline void power_off()
 inline void power_on()
 {
     power_all_enable();
+    led_on();
 }
 
 
