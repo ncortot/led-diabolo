@@ -2,6 +2,7 @@
 #include <IRLib.h>
 
 #include "led.h"
+#include "sleep.h"
 #include "remote.h"
 
 #define IR_RECEIVE_PIN 5
@@ -20,6 +21,7 @@ void setup() {
     receiver.enableIRIn();
     pinMode(IR_RECEIVE_PIN, INPUT);
     led_setup();
+    sleep_setup();
 }
 
 void loop() {
@@ -54,6 +56,7 @@ void loop() {
     Serial.println(counter, HEX);
 
     led_loop(color);
+    sleep_loop();
 
     delay(200);
 }

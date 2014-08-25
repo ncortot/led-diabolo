@@ -18,7 +18,7 @@ BUILDDIR := $(abspath $(CURDIR)/build)
 # To change these settings locally, create an `env.mk` file at the root
 # of this project and set the required parameters, e.g.:
 #
-#   ARDUINO_PATH := /Applications/Arduino.app/Contents/Resources/Java
+#   ARDUINO_PATH := /Applications/Arduino.app/Contents/Java
 #   ISP_SERIAL := /dev/tty.usbmodem123456
 #
 #************************************************************************
@@ -36,9 +36,9 @@ ARDUINO_PATH ?= /usr/share/arduino
 LIBRARY_PATH ?= $(abspath ../lib)
 
 # Configuration file for avrdude
-ifneq ("$(wildcard "$(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf")", "")
-	AVRDUDE_OPTIONS ?= "-C $(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf"
-endif
+#ifneq ("$(wildcard "$(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf*")", "")
+	AVRDUDE_OPTIONS ?= "-C$(ARDUINO_PATH)/hardware/tools/avr/etc/avrdude.conf"
+#endif
 
 # Add the avr compiler to the PATH
 export PATH := $(ARDUINO_PATH)/hardware/tools/avr/bin:$(PATH)
