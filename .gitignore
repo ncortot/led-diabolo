@@ -1,7 +1,7 @@
 *.a
-*.o
 *.d
-*.hex
 *.elf
+*.hex
+*.o
 
-/env.mk
+/software/env.mk

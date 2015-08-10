@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AAT3220
+D LDO Voltage Regulator 150mA
+K Voltage Regulator LDO
+F http://www.skyworksinc.com/uploads/documents/202250A.pdf
+$ENDCMP
+#
+#End Doc Library
