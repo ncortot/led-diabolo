@@ -6,4 +6,9 @@ K Voltage Regulator LDO
 F http://www.skyworksinc.com/uploads/documents/202250A.pdf
 $ENDCMP
 #
+$CMP TPS27081A
+D 1.2V - 8V, 3A PFET High Side Load Switch w/ Level Shift & Adj Slew Rate Control
+K load switch
+$ENDCMP
+#
 #End Doc Library
