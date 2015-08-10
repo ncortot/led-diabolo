@@ -9,8 +9,6 @@
 #define LATCH_PORT  PORTC
 #define LATCH_PIN   3
 
-#define PWM_PIN     4
-
 #define CMD_SWITCH  1
 #define CMD_CHANNEL 3
 #define CMD_GLOBAL  5
