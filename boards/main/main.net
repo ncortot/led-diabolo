@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/nc/Projects/led-diabolo/boards/main/main.sch)
-    (date "2015 August 10, Monday 17:28:44")
+    (date "2015 August 10, Monday 20:12:57")
     (tool "Eeschema (2015-08-09 BZR 6074)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -21,19 +21,19 @@
       (libsource (lib atmel) (part ATMEGA328P-A))
       (sheetpath (names /) (tstamps /))
       (tstamp 55C86CD5))
-    (comp (ref BT1)
+    (comp (ref BAT3)
       (value Battery)
       (footprint led-diabolo:BAT_HOLDER_12MM_PTH)
       (libsource (lib device) (part Battery))
       (sheetpath (names /) (tstamps /))
       (tstamp 55C871AE))
-    (comp (ref BT2)
+    (comp (ref BAT2)
       (value Battery)
       (footprint led-diabolo:BAT_HOLDER_12MM_PTH)
       (libsource (lib device) (part Battery))
       (sheetpath (names /) (tstamps /))
       (tstamp 55C871DE))
-    (comp (ref BT3)
+    (comp (ref BAT1)
       (value Battery)
       (footprint led-diabolo:BAT_HOLDER_12MM_PTH)
       (libsource (lib device) (part Battery))
@@ -94,6 +94,88 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 55C8AE24)))
   (libparts
+    (libpart (lib led-diabolo) (part AAT3220)
+      (aliases
+        (alias AAT3220IGY-3.3-T1))
+      (description "LDO Voltage Regulator 150mA")
+      (docs http://www.skyworksinc.com/uploads/documents/202250A.pdf)
+      (footprints
+        (fp SC59))
+      (fields
+        (field (name Reference) U)
+        (field (name Value) AAT3220)
+        (field (name Footprint) SC59))
+      (pins
+        (pin (num 1) (name IN) (type input))
+        (pin (num 2) (name GND) (type power_in))
+        (pin (num 3) (name OUT) (type power_out))))
+    (libpart (lib led-diabolo) (part ICSP)
+      (footprints
+        (fp ICSP_2x03))
+      (fields
+        (field (name Reference) P)
+        (field (name Value) ICSP))
+      (pins
+        (pin (num 1) (name MISO) (type passive))
+        (pin (num 2) (name VCC) (type passive))
+        (pin (num 3) (name SCK) (type passive))
+        (pin (num 4) (name MOSI) (type passive))
+        (pin (num 5) (name RST) (type passive))
+        (pin (num 6) (name GND) (type passive))))
+    (libpart (lib device) (part D)
+      (description Diode)
+      (footprints
+        (fp Diode_*)
+        (fp D-Pak_TO252AA)
+        (fp *SingleDiode)
+        (fp *_Diode_*)
+        (fp *SingleDiode*))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) D))
+      (pins
+        (pin (num 1) (name K) (type passive))
+        (pin (num 2) (name A) (type passive))))
+    (libpart (lib device) (part C)
+      (description "Unpolarized capacitor")
+      (footprints
+        (fp C?)
+        (fp C_????_*)
+        (fp C_????)
+        (fp SMD*_c)
+        (fp Capacitor*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part Battery)
+      (fields
+        (field (name Reference) BT)
+        (field (name Value) Battery))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp Resistor_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part SW_PUSH)
+      (description Button)
+      (fields
+        (field (name Reference) SW)
+        (field (name Value) SW_PUSH))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
     (libpart (lib atmel) (part ATMEGA168A-A)
       (aliases
         (alias ATMEGA48A-A)
@@ -141,89 +223,7 @@
         (pin (num 29) (name "(PCINT14/~RESET~)PC6") (type BiDi))
         (pin (num 30) (name "(PCINT16/RXD)PD0") (type BiDi))
         (pin (num 31) (name "(PCINT17/TXD)PD1") (type BiDi))
-        (pin (num 32) (name "(PCINT18/INT0)PD2") (type BiDi))))
-    (libpart (lib led-diabolo) (part AAT3220)
-      (aliases
-        (alias AAT3220IGY-3.3-T1))
-      (description "LDO Voltage Regulator 150mA")
-      (docs http://www.skyworksinc.com/uploads/documents/202250A.pdf)
-      (footprints
-        (fp SC59))
-      (fields
-        (field (name Reference) U)
-        (field (name Value) AAT3220)
-        (field (name Footprint) SC59))
-      (pins
-        (pin (num 1) (name IN) (type input))
-        (pin (num 2) (name GND) (type power_in))
-        (pin (num 3) (name OUT) (type power_out))))
-    (libpart (lib led-diabolo) (part ICSP)
-      (footprints
-        (fp ICSP_2x03))
-      (fields
-        (field (name Reference) P)
-        (field (name Value) ICSP))
-      (pins
-        (pin (num 1) (name MISO) (type passive))
-        (pin (num 2) (name VCC) (type passive))
-        (pin (num 3) (name SCK) (type passive))
-        (pin (num 4) (name MOSI) (type passive))
-        (pin (num 5) (name RST) (type passive))
-        (pin (num 6) (name GND) (type passive))))
-    (libpart (lib device) (part SW_PUSH)
-      (description Button)
-      (fields
-        (field (name Reference) SW)
-        (field (name Value) SW_PUSH))
-      (pins
-        (pin (num 1) (name 1) (type passive))
-        (pin (num 2) (name 2) (type passive))))
-    (libpart (lib device) (part D)
-      (description Diode)
-      (footprints
-        (fp Diode_*)
-        (fp D-Pak_TO252AA)
-        (fp *SingleDiode)
-        (fp *_Diode_*)
-        (fp *SingleDiode*))
-      (fields
-        (field (name Reference) D)
-        (field (name Value) D))
-      (pins
-        (pin (num 1) (name K) (type passive))
-        (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part Battery)
-      (fields
-        (field (name Reference) BT)
-        (field (name Value) Battery))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part C)
-      (description "Unpolarized capacitor")
-      (footprints
-        (fp C?)
-        (fp C_????_*)
-        (fp C_????)
-        (fp SMD*_c)
-        (fp Capacitor*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) C))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive)))))
+        (pin (num 32) (name "(PCINT18/INT0)PD2") (type BiDi)))))
   (libraries
     (library (logical led-diabolo)
       (uri /Users/nc/Projects/led-diabolo/boards/libraries/led-diabolo.lib))
@@ -241,7 +241,7 @@
       (node (ref U1) (pin 2))
       (node (ref C1) (pin 2))
       (node (ref C2) (pin 2))
-      (node (ref BT3) (pin 2))
+      (node (ref BAT1) (pin 2))
       (node (ref P1) (pin 6)))
     (net (code 2) (name "Net-(D2-Pad2)")
       (node (ref D2) (pin 2))
@@ -319,11 +319,11 @@
     (net (code 31) (name "Net-(IC1-Pad32)")
       (node (ref IC1) (pin 32)))
     (net (code 32) (name +BATT)
-      (node (ref BT1) (pin 1))
+      (node (ref BAT3) (pin 1))
       (node (ref D1) (pin 2)))
-    (net (code 33) (name "Net-(BT1-Pad2)")
-      (node (ref BT2) (pin 1))
-      (node (ref BT1) (pin 2)))
-    (net (code 34) (name "Net-(BT2-Pad2)")
-      (node (ref BT2) (pin 2))
-      (node (ref BT3) (pin 1)))))
+    (net (code 33) (name "Net-(BAT2-Pad1)")
+      (node (ref BAT2) (pin 1))
+      (node (ref BAT3) (pin 2)))
+    (net (code 34) (name "Net-(BAT1-Pad1)")
+      (node (ref BAT2) (pin 2))
+      (node (ref BAT1) (pin 1)))))
