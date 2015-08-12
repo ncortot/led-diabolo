@@ -39,9 +39,4 @@
   (pad 4 connect oval (at 2.54 2.54) (size 1.7272 1.7272) (layers F.Cu F.Mask))
   (pad 5 connect oval (at 0 5.08) (size 1.7272 1.7272) (layers F.Cu F.Mask))
   (pad 6 connect oval (at 2.54 5.08) (size 1.7272 1.7272) (layers F.Cu F.Mask))
-  (model Pin_Headers.3dshapes/Pin_Header_Straight_2x03.wrl
-    (at (xyz 0.05 -0.1 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
-  )
 )
