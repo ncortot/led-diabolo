@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/nc/Projects/led-diabolo/boards/main/main.sch)
-    (date "Thu 13 Aug 2015 10:59:24 AM CEST")
+    (date "Thu 13 Aug 2015 11:05:39 AM CEST")
     (tool "Eeschema (2015-08-12 BZR 6086)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
