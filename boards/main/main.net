@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/nc/Projects/led-diabolo/boards/main/main.sch)
-    (date "2015 August 15, Saturday 19:07:12")
+    (date "2015 August 16, Sunday 14:39:59")
     (tool "Eeschema (2015-08-09 BZR 6074)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -123,13 +123,13 @@
       (libsource (lib device) (part Q_PMOS_GSD))
       (sheetpath (names /) (tstamps /))
       (tstamp 55C9BC82))
-    (comp (ref Q4)
+    (comp (ref Q3)
       (value IRLML5103PbF)
       (footprint TO_SOT_Packages_SMD:SOT-23)
       (libsource (lib device) (part Q_PMOS_GSD))
       (sheetpath (names /) (tstamps /))
       (tstamp 55C9BCDF))
-    (comp (ref Q3)
+    (comp (ref Q4)
       (value 2N7002P)
       (footprint TO_SOT_Packages_SMD:SOT-23)
       (libsource (lib device) (part Q_NMOS_GSD))
@@ -268,140 +268,6 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 55CF0E46)))
   (libparts
-    (libpart (lib device) (part SW_PUSH)
-      (description Button)
-      (fields
-        (field (name Reference) SW)
-        (field (name Value) SW_PUSH))
-      (pins
-        (pin (num 1) (name 1) (type passive))
-        (pin (num 2) (name 2) (type passive))))
-    (libpart (lib led-diabolo) (part ICSP)
-      (footprints
-        (fp ICSP_2x03))
-      (fields
-        (field (name Reference) P)
-        (field (name Value) ICSP))
-      (pins
-        (pin (num 1) (name MISO) (type passive))
-        (pin (num 2) (name VCC) (type passive))
-        (pin (num 3) (name SCK) (type passive))
-        (pin (num 4) (name MOSI) (type passive))
-        (pin (num 5) (name RST) (type passive))
-        (pin (num 6) (name GND) (type passive))))
-    (libpart (lib device) (part Jumper_NC_Small)
-      (description "Jumper normally close")
-      (fields
-        (field (name Reference) JP)
-        (field (name Value) Jumper_NC_Small))
-      (pins
-        (pin (num 1) (name 1) (type passive))
-        (pin (num 2) (name 2) (type passive))))
-    (libpart (lib device) (part LED)
-      (footprints
-        (fp LED-3MM)
-        (fp LED-5MM)
-        (fp LED-10MM)
-        (fp LED-0603)
-        (fp LED-0805)
-        (fp LED-1206)
-        (fp LEDV))
-      (fields
-        (field (name Reference) D)
-        (field (name Value) LED))
-      (pins
-        (pin (num 1) (name K) (type passive))
-        (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part Battery)
-      (fields
-        (field (name Reference) BT)
-        (field (name Value) Battery))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part C)
-      (description "Unpolarized capacitor")
-      (footprints
-        (fp C?)
-        (fp C_????_*)
-        (fp C_????)
-        (fp SMD*_c)
-        (fp Capacitor*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) C))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part Q_NMOS_GSD)
-      (description "Transistor N-MOSFET (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_NMOS_GSD))
-      (pins
-        (pin (num 1) (name G) (type input))
-        (pin (num 2) (name S) (type passive))
-        (pin (num 3) (name D) (type passive))))
-    (libpart (lib device) (part Q_PMOS_GSD)
-      (description "Transistor P-MOSFET (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_PMOS_GSD))
-      (pins
-        (pin (num 1) (name G) (type input))
-        (pin (num 2) (name S) (type passive))
-        (pin (num 3) (name D) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part TST)
-      (fields
-        (field (name Reference) P)
-        (field (name Value) TST))
-      (pins
-        (pin (num 1) (name ~) (type passive))))
-    (libpart (lib conn) (part CONN_02X01)
-      (footprints
-        (fp Pin_Header_Straight_2X01)
-        (fp Pin_Header_Angled_2X01)
-        (fp Socket_Strip_Straight_2X01)
-        (fp Socket_Strip_Angled_2X01))
-      (fields
-        (field (name Reference) P)
-        (field (name Value) CONN_02X01))
-      (pins
-        (pin (num 1) (name P1) (type passive))
-        (pin (num 2) (name P2) (type passive))))
-    (libpart (lib conn) (part CONN_02X06)
-      (footprints
-        (fp Pin_Header_Straight_2X06)
-        (fp Pin_Header_Angled_2X06)
-        (fp Socket_Strip_Straight_2X06)
-        (fp Socket_Strip_Angled_2X06))
-      (fields
-        (field (name Reference) P)
-        (field (name Value) CONN_02X06))
-      (pins
-        (pin (num 1) (name P1) (type passive))
-        (pin (num 2) (name P2) (type passive))
-        (pin (num 3) (name P3) (type passive))
-        (pin (num 4) (name P4) (type passive))
-        (pin (num 5) (name P5) (type passive))
-        (pin (num 6) (name P6) (type passive))
-        (pin (num 7) (name P7) (type passive))
-        (pin (num 8) (name P8) (type passive))
-        (pin (num 9) (name P9) (type passive))
-        (pin (num 10) (name P10) (type passive))
-        (pin (num 11) (name P11) (type passive))
-        (pin (num 12) (name P12) (type passive))))
     (libpart (lib atmel) (part ATMEGA168A-A)
       (aliases
         (alias ATMEGA48A-A)
@@ -450,6 +316,106 @@
         (pin (num 30) (name "(PCINT16/RXD)PD0") (type BiDi))
         (pin (num 31) (name "(PCINT17/TXD)PD1") (type BiDi))
         (pin (num 32) (name "(PCINT18/INT0)PD2") (type BiDi))))
+    (libpart (lib conn) (part CONN_02X01)
+      (footprints
+        (fp Pin_Header_Straight_2X01)
+        (fp Pin_Header_Angled_2X01)
+        (fp Socket_Strip_Straight_2X01)
+        (fp Socket_Strip_Angled_2X01))
+      (fields
+        (field (name Reference) P)
+        (field (name Value) CONN_02X01))
+      (pins
+        (pin (num 1) (name P1) (type passive))
+        (pin (num 2) (name P2) (type passive))))
+    (libpart (lib conn) (part CONN_02X06)
+      (footprints
+        (fp Pin_Header_Straight_2X06)
+        (fp Pin_Header_Angled_2X06)
+        (fp Socket_Strip_Straight_2X06)
+        (fp Socket_Strip_Angled_2X06))
+      (fields
+        (field (name Reference) P)
+        (field (name Value) CONN_02X06))
+      (pins
+        (pin (num 1) (name P1) (type passive))
+        (pin (num 2) (name P2) (type passive))
+        (pin (num 3) (name P3) (type passive))
+        (pin (num 4) (name P4) (type passive))
+        (pin (num 5) (name P5) (type passive))
+        (pin (num 6) (name P6) (type passive))
+        (pin (num 7) (name P7) (type passive))
+        (pin (num 8) (name P8) (type passive))
+        (pin (num 9) (name P9) (type passive))
+        (pin (num 10) (name P10) (type passive))
+        (pin (num 11) (name P11) (type passive))
+        (pin (num 12) (name P12) (type passive))))
+    (libpart (lib device) (part Jumper_NC_Small)
+      (description "Jumper normally close")
+      (fields
+        (field (name Reference) JP)
+        (field (name Value) Jumper_NC_Small))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib device) (part LED)
+      (footprints
+        (fp LED-3MM)
+        (fp LED-5MM)
+        (fp LED-10MM)
+        (fp LED-0603)
+        (fp LED-0805)
+        (fp LED-1206)
+        (fp LEDV))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) LED))
+      (pins
+        (pin (num 1) (name K) (type passive))
+        (pin (num 2) (name A) (type passive))))
+    (libpart (lib device) (part Q_NMOS_GSD)
+      (description "Transistor N-MOSFET (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_NMOS_GSD))
+      (pins
+        (pin (num 1) (name G) (type input))
+        (pin (num 2) (name S) (type passive))
+        (pin (num 3) (name D) (type passive))))
+    (libpart (lib device) (part Q_PMOS_GSD)
+      (description "Transistor P-MOSFET (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_PMOS_GSD))
+      (pins
+        (pin (num 1) (name G) (type input))
+        (pin (num 2) (name S) (type passive))
+        (pin (num 3) (name D) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp Resistor_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part SW_PUSH)
+      (description Button)
+      (fields
+        (field (name Reference) SW)
+        (field (name Value) SW_PUSH))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib device) (part TST)
+      (fields
+        (field (name Reference) P)
+        (field (name Value) TST))
+      (pins
+        (pin (num 1) (name ~) (type passive))))
     (libpart (lib led-diabolo) (part MCP1700)
       (description "LDO Voltage Regulator 250mA")
       (docs http://ww1.microchip.com/downloads/en/DeviceDoc/20001826C.pdf)
@@ -461,16 +427,50 @@
       (pins
         (pin (num 1) (name GND) (type power_in))
         (pin (num 2) (name OUT) (type power_out))
-        (pin (num 3) (name IN) (type input)))))
+        (pin (num 3) (name IN) (type input))))
+    (libpart (lib led-diabolo) (part ICSP)
+      (footprints
+        (fp ICSP_2x03))
+      (fields
+        (field (name Reference) P)
+        (field (name Value) ICSP))
+      (pins
+        (pin (num 1) (name MISO) (type passive))
+        (pin (num 2) (name VCC) (type passive))
+        (pin (num 3) (name SCK) (type passive))
+        (pin (num 4) (name MOSI) (type passive))
+        (pin (num 5) (name RST) (type passive))
+        (pin (num 6) (name GND) (type passive))))
+    (libpart (lib device) (part Battery)
+      (fields
+        (field (name Reference) BT)
+        (field (name Value) Battery))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part C)
+      (description "Unpolarized capacitor")
+      (footprints
+        (fp C?)
+        (fp C_????_*)
+        (fp C_????)
+        (fp SMD*_c)
+        (fp Capacitor*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive)))))
   (libraries
-    (library (logical device)
-      (uri "/Library/Application Support/kicad/library/device.lib"))
     (library (logical led-diabolo)
       (uri /Users/nc/Projects/led-diabolo/boards/libraries/led-diabolo.lib))
+    (library (logical atmel)
+      (uri "/Library/Application Support/kicad/library/atmel.lib"))
     (library (logical conn)
       (uri "/Library/Application Support/kicad/library/conn.lib"))
-    (library (logical atmel)
-      (uri "/Library/Application Support/kicad/library/atmel.lib")))
+    (library (logical device)
+      (uri "/Library/Application Support/kicad/library/device.lib")))
   (nets
     (net (code 1) (name "Net-(BAT3-Pad1)")
       (node (ref Q1) (pin 3))
@@ -510,16 +510,16 @@
       (node (ref JP6) (pin 1)))
     (net (code 8) (name +3V3)
       (node (ref P3) (pin 10))
-      (node (ref Q4) (pin 3)))
+      (node (ref Q3) (pin 3)))
     (net (code 9) (name "Net-(JP3-Pad2)")
-      (node (ref Q4) (pin 2))
+      (node (ref Q3) (pin 2))
       (node (ref JP3) (pin 2)))
     (net (code 10) (name /+4.5V_EN)
       (node (ref JP5) (pin 2))
-      (node (ref Q3) (pin 1))
+      (node (ref Q4) (pin 1))
       (node (ref R2) (pin 2)))
     (net (code 11) (name "Net-(Q2-Pad1)")
-      (node (ref Q3) (pin 3))
+      (node (ref Q4) (pin 3))
       (node (ref R1) (pin 2))
       (node (ref Q2) (pin 1)))
     (net (code 12) (name "Net-(JP1-Pad2)")
@@ -617,7 +617,7 @@
       (node (ref R2) (pin 1))
       (node (ref C4) (pin 2))
       (node (ref Q1) (pin 1))
-      (node (ref Q3) (pin 2))
+      (node (ref Q4) (pin 2))
       (node (ref R8) (pin 2))
       (node (ref P4) (pin 6))
       (node (ref C3) (pin 2)))
@@ -670,4 +670,4 @@
     (net (code 51) (name /+3.3V_EN)
       (node (ref R3) (pin 2))
       (node (ref JP4) (pin 2))
-      (node (ref Q4) (pin 1)))))
+      (node (ref Q3) (pin 1)))))
