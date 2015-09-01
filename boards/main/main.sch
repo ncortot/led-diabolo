@@ -36,7 +36,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "LED-Diabolo Main Board"
-Date "2015-08-11"
+Date "2015-09-01"
 Rev "2.0"
 Comp ""
 Comment1 ""
