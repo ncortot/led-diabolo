@@ -14,6 +14,10 @@ K Voltage Regulator LDO
 F http://www.skyworksinc.com/uploads/documents/202250A.pdf
 $ENDCMP
 #
+$CMP LED1642GW
+D LED1642GW 16 channel LED driver
+$ENDCMP
+#
 $CMP MCP1700
 D LDO Voltage Regulator 250mA
 K Voltage Regulator LDO
